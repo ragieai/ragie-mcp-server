@@ -38,7 +38,9 @@ npm run build
 
 2. Run the server:
 
+```bash
 RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id ./build/index.js
+```
 
 The server will start and listen on stdio for MCP protocol messages.
 
