@@ -1,3 +1,6 @@
+![image](https://github.com/user-attachments/assets/e0007bdd-4e21-43b6-8d76-3d8982b9889a)
+
+
 # Ragie Model Context Protocol Server
 
 A Model Context Protocol (MCP) server that provides access to Ragie's knowledge base retrieval capabilities.
