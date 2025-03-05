@@ -12,7 +12,7 @@
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "weather": "./build/index.js"
+    "ragie-mcp": "./build/index.js"
   },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\""
