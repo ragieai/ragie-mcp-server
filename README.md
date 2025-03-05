@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/e0007bdd-4e21-43b6-8d76-3d8982b9889a)
+![image](https://github.com/user-attachments/assets/75e80f87-f39e-4f10-8c97-bbc848bbed82)
 
 
 # Ragie Model Context Protocol Server
