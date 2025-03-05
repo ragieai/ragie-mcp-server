@@ -85,16 +85,16 @@ This project is written in TypeScript and uses the following main dependencies:
 
 ### Development setup
 
-Building the project:
-
-```bash
-npm run build
-```
-
 Running the server in dev mode:
 
 ```bash
 RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npm run dev
+```
+
+Building the project:
+
+```bash
+npm run build
 ```
 
 ## License
