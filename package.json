@@ -1,23 +1,23 @@
 {
-  "name": "ragie-mcp",
+  "name": "@ragieai/mcp-server",
   "version": "0.0.1",
   "description": "A Model Context Protocol (MCP) server for Ragie",
   "license": "MIT",
   "author": "Ragie Corp",
-  "homepage": "https://github.com/ragieai/ragie-mcp",
+  "homepage": "https://github.com/ragieai/ragie-mcp-server",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ragieai/ragie-mcp.git"
+    "url": "https://github.com/ragieai/ragie-mcp-server.git"
   },
   "main": "build/index.js",
   "type": "module",
   "bin": {
-    "ragie-mcp": "./build/index.js"
+    "ragie-mcp-server": "./build/index.js"
   },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "dev": "tsx src/index.ts",
-    "prepublish": "npm run build"
+    "prepare": "npm run build"
   },
   "files": [
     "build"
