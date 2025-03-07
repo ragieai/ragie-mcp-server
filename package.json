@@ -1,6 +1,6 @@
 {
   "name": "@ragieai/mcp-server",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "A Model Context Protocol (MCP) server for Ragie",
   "license": "MIT",
   "author": "Ragie Corp",
@@ -31,5 +31,15 @@
     "@types/node": "^22.13.5",
     "tsx": "^4.19.3",
     "typescript": "^5.7.3"
-  }
+  },
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ragie",
+    "knowledge-base",
+    "retrieval",
+    "ai",
+    "claude",
+    "anthropic"
+  ]
 }
