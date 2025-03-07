@@ -16,7 +16,8 @@
   },
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
-    "dev": "tsx src/index.ts"
+    "dev": "tsx src/index.ts",
+    "prepublish": "npm run build"
   },
   "files": [
     "build"
