@@ -27,7 +27,7 @@ The server will start and listen on stdio for MCP protocol messages.
 Install and run the server with npx:
 
 ```bash
-RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx ragie-mcp-server
+RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx @ragieai/mcp-server
 ```
 
 ## Claude Desktop Configuration
@@ -48,7 +48,7 @@ To use this MCP server with Claude desktop:
       "command": "npx",
       "args": [
         "-y",
-        "ragie-mcp-server"
+        "@ragieai/mcp-server"
       ],
       "env": {
         "RAGIE_API_KEY": "your_api_key",
