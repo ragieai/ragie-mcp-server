@@ -30,17 +30,18 @@ Install and run the server with npx:
 RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx @ragieai/mcp-server
 ```
 
-## Claude Desktop Configuration
+## Cursor Configuration
 
-To use this MCP server with Claude desktop:
+To use this MCP server with Cursor:
 
-1. Create the MCP config file `claude_desktop_config.json`:
-* For MacOS: Open directory `~/Library/Application Support/Claude/` and create the file inside it
-* For Windows: Open directory `%APPDATA%/Claude/` and create the file inside it
+1. Save a file called `mcp.json`
 
-2. Save `claude_desktop_config.json` with the following content:
+* **For tools specific to a project**, create a `.cursor/mcp.json` file in your project directory. This allows you to define MCP servers that are only available within that specific project.
+* **For tools that you want to use across all projects**, create a `~/.cursor/mcp.json` file in your home directory. This makes MCP servers available in all your Cursor workspaces.
+
 * Note that `RAGIE_PARTITION` is optional.
 
+Example `mcp.json`:
 ```json
 {
   "mcpServers": {
@@ -61,7 +62,40 @@ To use this MCP server with Claude desktop:
 
 Replace `your_api_key` with your actual Ragie API key and optionally set `RAGIE_PARTITION` if needed.
 
-3. Restart Claude desktop for the changes to take effect.
+
+## Claude Desktop Configuration
+
+To use this MCP server with Claude desktop:
+
+1. Create the MCP config file `claude_desktop_config.json`:
+
+* For MacOS: Use `~/Library/Application Support/Claude/claude_desktop_config.json`
+* For Windows: Use `%APPDATA%/Claude/claude_desktop_config.json`
+
+* Note that `RAGIE_PARTITION` is optional.
+
+Example `claude_desktop_config.json`:
+```json
+{
+  "mcpServers": {
+    "ragie": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@ragieai/mcp-server"
+      ],
+      "env": {
+        "RAGIE_API_KEY": "your_api_key",
+        "RAGIE_PARTITION": "optional_partition_id"
+      }
+    }
+  }
+}
+```
+
+Replace `your_api_key` with your actual Ragie API key and optionally set `RAGIE_PARTITION` if needed.
+
+2. Restart Claude desktop for the changes to take effect.
 
 The Ragie retrieval tool will now be available in your Claude desktop conversations.
 
