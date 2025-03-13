@@ -34,6 +34,8 @@ RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx @ragieai/mc
 
 To use this MCP server with Cursor:
 
+### Option 1: Create an MCP configuration file
+
 1. Save a file called `mcp.json`
 
 * **For tools specific to a project**, create a `.cursor/mcp.json` file in your project directory. This allows you to define MCP servers that are only available within that specific project.
@@ -59,6 +61,22 @@ Example `mcp.json`:
   }
 }
 ```
+
+### Option 2: Use a shell script
+
+1. Save a file called `ragie-mcp.sh` on your system:
+```bash
+#!/usr/bin/env bash
+
+export RAGIE_API_KEY="your_api_key"
+export RAGIE_PARTITION_ID="optional_partition_id"
+
+npx -y @ragieai/mcp-server
+```
+
+2. Give the file execute permissions: `chmod +x ragie-mcp.sh`
+
+3. Add the MCP server script by going to **Settings** -> **Cursor Settings** -> **MCP Servers** in the Cursor UI.
 
 Replace `your_api_key` with your actual Ragie API key and optionally set `RAGIE_PARTITION` if needed.
 
