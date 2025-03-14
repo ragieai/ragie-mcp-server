@@ -4,21 +4,46 @@ import { McpServer } from "@modelcontextprotocol/sdk/server/mcp.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { Ragie } from "ragie";
 import { z } from "zod";
+import { Command } from "commander";
 
 if (!process.env.RAGIE_API_KEY) throw new Error("RAGIE_API_KEY not set");
 const RAGIE_API_KEY = process.env.RAGIE_API_KEY;
 const RAGIE_PARTITION = process.env.RAGIE_PARTITION;
 
+// Parse command line arguments
+const program = new Command();
+program
+  .option(
+    "-d, --description [description]",
+    "override the default tool description"
+  )
+  .parse(process.argv);
+
+const options = program.opts();
+
 const server = new McpServer({ name: "ragie", version: "0.0.1" });
 
-server.tool(
-  "retrieve",
-  `Look up information in the Knowledge Base. Use this tool when you need to:
+// Default tool description
+const defaultDescription = `Look up information in the Knowledge Base. Use this tool when you need to:
  - Find relevant documents or information on specific topics
  - Retrieve company policies, procedures, or guidelines
  - Access product specifications or technical documentation
  - Get contextual information to answer company-specific questions
- - Find historical data or information about projects`,
+ - Find historical data or information about projects`;
+
+if (RAGIE_PARTITION) {
+  console.error("Using partition", RAGIE_PARTITION);
+}
+
+// Use the provided description if available, otherwise use the default
+if (options.description) {
+  console.error("Using overridden description");
+}
+const description = options.description || defaultDescription;
+
+server.tool(
+  "retrieve",
+  description,
   {
     query: z
       .string()

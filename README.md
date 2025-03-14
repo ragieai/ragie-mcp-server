@@ -30,6 +30,18 @@ Install and run the server with npx:
 RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx @ragieai/mcp-server
 ```
 
+### Command Line Options
+
+The server supports the following command line options:
+
+- `--description <text>`: Override the default tool description with custom text
+
+Example with custom description:
+
+```bash
+RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --description "Search the company knowledge base for information"
+```
+
 ## Cursor Configuration
 
 To use this MCP server with Cursor:
