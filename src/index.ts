@@ -42,7 +42,7 @@ if (options.description) {
 const description = options.description || defaultDescription;
 
 server.tool(
-  "retrieve",
+  "knowledge-base-retrieve",
   description,
   {
     query: z
