@@ -8,7 +8,6 @@ import { Command } from "commander";
 
 if (!process.env.RAGIE_API_KEY) throw new Error("RAGIE_API_KEY not set");
 const RAGIE_API_KEY = process.env.RAGIE_API_KEY;
-const RAGIE_PARTITION = process.env.RAGIE_PARTITION;
 
 // Parse command line arguments
 const program = new Command();
@@ -17,6 +16,7 @@ program
     "-d, --description [description]",
     "override the default tool description"
   )
+  .option("-p, --partition [partition]", "specify the Ragie partition to use")
   .parse(process.argv);
 
 const options = program.opts();
@@ -31,8 +31,8 @@ const defaultDescription = `Look up information in the Knowledge Base. Use this 
  - Get contextual information to answer company-specific questions
  - Find historical data or information about projects`;
 
-if (RAGIE_PARTITION) {
-  console.error("Using partition", RAGIE_PARTITION);
+if (options.partition) {
+  console.error("Using partition", options.partition);
 }
 
 // Use the provided description if available, otherwise use the default
@@ -53,7 +53,7 @@ server.tool(
     const ragie = new Ragie({ auth: RAGIE_API_KEY });
     const retrieval = await ragie.retrievals.retrieve({
       query,
-      partition: RAGIE_PARTITION,
+      partition: options.partition,
     });
 
     const content = retrieval.scoredChunks.map((sc) => ({

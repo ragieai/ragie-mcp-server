@@ -13,33 +13,39 @@ This server implements the Model Context Protocol to enable AI models to retriev
 
 - Node.js >= 18
 - A Ragie API key
-- (Optional) A Ragie partition ID
 
 ## Installation
 
-The server requires the following environment variables:
+The server requires the following environment variable:
 
 - `RAGIE_API_KEY` (required): Your Ragie API authentication key
-- `RAGIE_PARTITION` (optional): The Ragie partition ID to query
 
 The server will start and listen on stdio for MCP protocol messages.
 
 Install and run the server with npx:
 
 ```bash
-RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npx @ragieai/mcp-server
+RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server
 ```
 
 ### Command Line Options
 
 The server supports the following command line options:
 
-- `--description <text>`: Override the default tool description with custom text
+- `--description, -d <text>`: Override the default tool description with custom text
+- `--partition, -p <id>`: Specify the Ragie partition ID to query
 
-Example with custom description:
+Examples:
 
 ```bash
+# With custom description
 RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --description "Search the company knowledge base for information"
+
+# With partition specified
+RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --partition your_partition_id
+
+# Using both options
+RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --description "Search the company knowledge base" --partition your_partition_id
 ```
 
 ## Cursor Configuration
@@ -53,8 +59,6 @@ To use this MCP server with Cursor:
 * **For tools specific to a project**, create a `.cursor/mcp.json` file in your project directory. This allows you to define MCP servers that are only available within that specific project.
 * **For tools that you want to use across all projects**, create a `~/.cursor/mcp.json` file in your home directory. This makes MCP servers available in all your Cursor workspaces.
 
-* Note that `RAGIE_PARTITION` is optional.
-
 Example `mcp.json`:
 ```json
 {
@@ -63,11 +67,12 @@ Example `mcp.json`:
       "command": "npx",
       "args": [
         "-y",
-        "@ragieai/mcp-server"
+        "@ragieai/mcp-server",
+        "--partition",
+        "optional_partition_id"
       ],
       "env": {
-        "RAGIE_API_KEY": "your_api_key",
-        "RAGIE_PARTITION": "optional_partition_id"
+        "RAGIE_API_KEY": "your_api_key"
       }
     }
   }
@@ -81,16 +86,15 @@ Example `mcp.json`:
 #!/usr/bin/env bash
 
 export RAGIE_API_KEY="your_api_key"
-export RAGIE_PARTITION_ID="optional_partition_id"
 
-npx -y @ragieai/mcp-server
+npx -y @ragieai/mcp-server --partition optional_partition_id
 ```
 
 2. Give the file execute permissions: `chmod +x ragie-mcp.sh`
 
 3. Add the MCP server script by going to **Settings** -> **Cursor Settings** -> **MCP Servers** in the Cursor UI.
 
-Replace `your_api_key` with your actual Ragie API key and optionally set `RAGIE_PARTITION` if needed.
+Replace `your_api_key` with your actual Ragie API key and optionally set the partition ID if needed.
 
 
 ## Claude Desktop Configuration
@@ -102,8 +106,6 @@ To use this MCP server with Claude desktop:
 * For MacOS: Use `~/Library/Application Support/Claude/claude_desktop_config.json`
 * For Windows: Use `%APPDATA%/Claude/claude_desktop_config.json`
 
-* Note that `RAGIE_PARTITION` is optional.
-
 Example `claude_desktop_config.json`:
 ```json
 {
@@ -112,18 +114,19 @@ Example `claude_desktop_config.json`:
       "command": "npx",
       "args": [
         "-y",
-        "@ragieai/mcp-server"
+        "@ragieai/mcp-server",
+        "--partition",
+        "optional_partition_id"
       ],
       "env": {
-        "RAGIE_API_KEY": "your_api_key",
-        "RAGIE_PARTITION": "optional_partition_id"
+        "RAGIE_API_KEY": "your_api_key"
       }
     }
   }
 }
 ```
 
-Replace `your_api_key` with your actual Ragie API key and optionally set `RAGIE_PARTITION` if needed.
+Replace `your_api_key` with your actual Ragie API key and optionally set the partition ID if needed.
 
 2. Restart Claude desktop for the changes to take effect.
 
@@ -152,7 +155,7 @@ This project is written in TypeScript and uses the following main dependencies:
 Running the server in dev mode:
 
 ```bash
-RAGIE_API_KEY=your_api_key RAGIE_PARTITION=optional_partition_id npm run dev
+RAGIE_API_KEY=your_api_key npm run dev -- --partition optional_partition_id
 ```
 
 Building the project:
