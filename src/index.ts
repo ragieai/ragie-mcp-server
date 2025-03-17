@@ -5,13 +5,24 @@ import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js"
 import { Ragie } from "ragie";
 import { z } from "zod";
 import { Command } from "commander";
+import { readFileSync } from "fs";
+import { fileURLToPath } from "url";
+import { dirname, join } from "path";
 
 if (!process.env.RAGIE_API_KEY) throw new Error("RAGIE_API_KEY not set");
 const RAGIE_API_KEY = process.env.RAGIE_API_KEY;
 
+// Get package version from package.json
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
+const packageJsonPath = join(__dirname, "..", "package.json");
+const packageJson = JSON.parse(readFileSync(packageJsonPath, "utf8"));
+const packageVersion = packageJson.version;
+
 // Parse command line arguments
 const program = new Command();
 program
+  .version(packageVersion, "-v, --version", "output the current version")
   .option(
     "-d, --description [description]",
     "override the default tool description"
