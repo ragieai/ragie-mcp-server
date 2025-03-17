@@ -32,7 +32,7 @@ program
 
 const options = program.opts();
 
-const server = new McpServer({ name: "ragie", version: "0.0.1" });
+const server = new McpServer({ name: "ragie", version: "1.0.0" });
 
 // Default tool description
 const defaultDescription = `Look up information in the Knowledge Base. Use this tool when you need to:
