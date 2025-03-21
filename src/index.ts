@@ -59,11 +59,33 @@ server.tool(
     query: z
       .string()
       .describe("The query to search for data in the Knowledge Base"),
+    topK: z
+      .number()
+      .describe("The maximum number of results to return. Defaults to 8.")
+      .optional()
+      .default(8),
+    rerank: z
+      .boolean()
+      .describe(
+        "Whether to try and find only the most relevant data. Defaults to true. If no relevant data is found, try again with this parameter set to false."
+      )
+      .optional()
+      .default(true),
+    recencyBias: z
+      .boolean()
+      .describe(
+        "Whether to favor data towards more recent documents. Defaults to false."
+      )
+      .optional()
+      .default(false),
   },
-  async ({ query }) => {
+  async ({ query, topK, rerank, recencyBias }) => {
     const ragie = new Ragie({ auth: RAGIE_API_KEY });
     const retrieval = await ragie.retrievals.retrieve({
       query,
+      topK,
+      rerank,
+      recencyBias,
       partition: options.partition,
     });
 

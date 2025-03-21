@@ -139,6 +139,9 @@ The Ragie retrieval tool will now be available in your Claude desktop conversati
 The server provides a `retrieve` tool that can be used to search the knowledge base. It accepts the following parameters:
 
 - `query` (string): The search query to find relevant information
+- `topK` (number, optional, default: 8): The maximum number of results to return
+- `rerank` (boolean, optional, default: true): Whether to try and find only the most relevant information
+- `recencyBias` (boolean, optional, default: false): Whether to favor results towards more recent information
 
 The tool returns:
 - An array of content chunks containing matching text from the knowledge base
