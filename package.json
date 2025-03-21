@@ -1,6 +1,6 @@
 {
   "name": "@ragieai/mcp-server",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A Model Context Protocol (MCP) server for Ragie",
   "license": "MIT",
   "author": "Ragie Corp",
