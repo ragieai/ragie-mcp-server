@@ -76,10 +76,10 @@ server.tool(
     rerank: z
       .boolean()
       .describe(
-        "Whether to try and find only the most relevant data. Defaults to true. If no relevant data is found, try again with this parameter set to false."
+        "Whether to try and find only the most relevant data. Defaults to false."
       )
       .optional()
-      .default(true),
+      .default(false),
     recencyBias: z
       .boolean()
       .describe(
