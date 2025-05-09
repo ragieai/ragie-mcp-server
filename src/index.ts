@@ -59,6 +59,15 @@ server.tool(
     query: z
       .string()
       .describe("The query to search for data in the Knowledge Base"),
+    filter: z
+      .object({
+        field: z.string().describe("The field to filter by"),
+        value: z.any().describe("The value to filter by"),
+      })
+      .describe(
+        "The metadata search filter on documents. Returns chunks only from documents which match the filter. The following filter operators are supported: $eq - Equal to (number, string, boolean), $ne - Not equal to (number, string, boolean), $gt - Greater than (number), $gte - Greater than or equal to (number), $lt - Less than (number), $lte - Less than or equal to (number), $in - In array (string or number), $nin - Not in array (string or number). The operators can be combined with AND and OR. Read Metadata & Filters guide for more details and examples."
+      )
+      .optional(),
     topK: z
       .number()
       .describe("The maximum number of results to return. Defaults to 8.")
@@ -79,10 +88,11 @@ server.tool(
       .optional()
       .default(false),
   },
-  async ({ query, topK, rerank, recencyBias }) => {
+  async ({ query, filter, topK, rerank, recencyBias }) => {
     const ragie = new Ragie({ auth: RAGIE_API_KEY });
     const retrieval = await ragie.retrievals.retrieve({
       query,
+      filter,
       topK,
       rerank,
       recencyBias,
