@@ -53,7 +53,7 @@ if (options.description) {
 const description = options.description || defaultDescription;
 
 server.tool(
-  "ragie_retrieve",
+  "retrieve",
   description,
   {
     query: z
