@@ -1,3 +1,5 @@
+[![MseeP.ai Security Assessment Badge](https://mseep.net/pr/ragieai-ragie-mcp-server-badge.png)](https://mseep.ai/app/ragieai-ragie-mcp-server)
+
 ![image](https://github.com/user-attachments/assets/75e80f87-f39e-4f10-8c97-bbc848bbed82)
 
 
