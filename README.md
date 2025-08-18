@@ -2,6 +2,7 @@
 
 
 # Ragie Model Context Protocol Server
+[![Trust Score](https://archestra.ai/mcp-catalog/api/badge/quality/ragieai/ragie-mcp-server)](https://archestra.ai/mcp-catalog/ragieai__ragie-mcp-server)
 
 A Model Context Protocol (MCP) server that provides access to Ragie's knowledge base retrieval capabilities.
 
