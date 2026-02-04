@@ -1,3 +1,9 @@
+# IMPORTANT!
+
+*This project is no longer needed*.  Ragie now supports MCP natively as a streamable HTTP server.  See docs here: [https://docs.ragie.ai/docs/mcp-overview]
+
+If you would like users within your company to be able to access you knowledge base in applications like Claude or ChatGPT, you may need [MCP Bridge](https://www.ragie.ai/mcp-bridge)
+
 ![image](https://github.com/user-attachments/assets/75e80f87-f39e-4f10-8c97-bbc848bbed82)
 
 
