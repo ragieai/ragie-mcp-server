@@ -54,6 +54,10 @@ RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --partition your_partition_id
 RAGIE_API_KEY=your_api_key npx @ragieai/mcp-server --description "Search the company knowledge base" --partition your_partition_id
 ```
 
+## Hosted deployment
+
+A hosted deployment is available on [Fronteir AI](https://fronteir.ai/mcp/ragieai-mcp-server).
+
 ## Cursor Configuration
 
 To use this MCP server with Cursor:
