@@ -9,9 +9,6 @@ import { readFileSync } from "fs";
 import { fileURLToPath } from "url";
 import { dirname, join } from "path";
 
-if (!process.env.RAGIE_API_KEY) throw new Error("RAGIE_API_KEY not set");
-const RAGIE_API_KEY = process.env.RAGIE_API_KEY;
-
 // Get package version from package.json
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,6 +28,9 @@ program
   .parse(process.argv);
 
 const options = program.opts();
+
+if (!process.env.RAGIE_API_KEY) throw new Error("RAGIE_API_KEY not set");
+const RAGIE_API_KEY = process.env.RAGIE_API_KEY;
 
 const server = new McpServer({ name: "ragie", version: "1.0.0" });
 
