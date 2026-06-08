@@ -17,6 +17,7 @@
   "scripts": {
     "build": "tsc && node -e \"require('fs').chmodSync('build/index.js', '755')\"",
     "dev": "tsx src/index.ts",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "prepare": "npm run build"
   },
   "files": [
